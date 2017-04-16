@@ -18,21 +18,6 @@ struct SnackInfo {
 }
 
 extension PugNotification: TypedNotification {
-    public var name: String {
-        switch self {
-        case .arrive:
-            return "pug.arrive"
-        case .blep:
-            return "pug.blep"
-        case .boop:
-            return "pug.boop"
-        case .pet:
-            return "pug.pet"
-        case .leave:
-            return "pug.leave"
-        }
-    }
-
     public var content: TypedNotificationContentType? {
         switch self {
         case .arrive:
