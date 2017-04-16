@@ -3,7 +3,7 @@ enum PugNotification {
     case blep(isBlepping: Bool)
     case boop(count: UInt)
     case pet(location: PetLocation)
-    case leave(snack: SnackInfo)
+    case leave(snackName: String, snackCount: UInt)
 }
 
 public enum PetLocation {
@@ -12,27 +12,7 @@ public enum PetLocation {
     case tummy
 }
 
-struct SnackInfo {
-    let name: String
-    let count: UInt
-}
-
-extension PugNotification: TypedNotification {
-    public var content: TypedNotificationContentType? {
-        switch self {
-        case .arrive:
-            return nil
-        case .blep(let isBlepping):
-            return isBlepping
-        case .boop(let count):
-            return count
-        case .pet(let location):
-            return location
-        case .leave(snack: let snack):
-            return snack
-        }
-    }
-}
+extension PugNotification: TypedNotification {}
 
 extension Bool: TypedNotificationContentType {}
 extension UInt: TypedNotificationContentType {}
@@ -41,8 +21,4 @@ extension PetLocation: TypedNotificationContentType {
         self = .ear
     }
 }
-extension SnackInfo: TypedNotificationContentType {
-    public init() {
-        self.init(name: "", count: 0)
-    }
-}
+extension String: TypedNotificationContentType {}

@@ -33,14 +33,14 @@ public class NotificationPrinter {
         }
         observers.append(token)
 
-        token = PugNotification.addObserver(PugNotification.leave) { snack in
-            switch snack.count {
+        token = PugNotification.addObserver(PugNotification.leave) { snackName, snackCount in
+            switch snackCount {
             case 0:
-                print("Stubbly had to leave because it wants to eat 0 \(snack.name)s. ¯\\_(ツ)_/¯")
+                print("Stubbly had to leave because it wants to eat 0 \(snackName)s. ¯\\_(ツ)_/¯")
             case 1:
-                print("Stubbly had to leave because it wants to eat a \(snack.name).")
+                print("Stubbly had to leave because it wants to eat a \(snackName).")
             default:
-                print("Stubbly had to leave because it wants to eat \(snack.count) \(snack.name)s.")
+                print("Stubbly had to leave because it wants to eat \(snackCount) \(snackName)s.")
             }
         }
         observers.append(token)
